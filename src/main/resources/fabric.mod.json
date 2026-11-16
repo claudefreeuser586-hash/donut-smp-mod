@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "donutsmp",
+  "version": "${version}",
+  "name": "Donut SMP",
+  "description": "Economy, shops, homes and a sidebar inspired by Donut SMP.",
+  "authors": ["YourName"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.example.donutsmp.DonutSMP"],
+    "client": ["com.example.donutsmp.client.DonutSMPClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~26.2",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
