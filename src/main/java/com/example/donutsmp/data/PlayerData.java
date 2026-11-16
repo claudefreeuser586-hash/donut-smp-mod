@@ -1,10 +1,11 @@
 package com.example.donutsmp.data;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
- * بيانات لاعب واحد. المال يُخزَّن بالسنتات (cents) لتجنب أخطاء الفاصلة العشرية.
- * مثال: 1500 = $15.00
+ * Data for one player. Money is stored in cents to avoid floating-point errors.
  */
 public class PlayerData {
     private final UUID uuid;
@@ -14,6 +15,7 @@ public class PlayerData {
     private int kills;
     private int deaths;
     private long playtimeSeconds;
+    private Map<String, Home> homes; // null for files created before Phase 2
 
     public PlayerData(UUID uuid, String lastKnownName) {
         this.uuid = uuid;
@@ -53,4 +55,10 @@ public class PlayerData {
 
     public long getPlaytimeSeconds() { return playtimeSeconds; }
     public void addPlaytimeSeconds(long seconds) { playtimeSeconds += seconds; }
+
+    /** Homes by name. Lazily created so older save files still load. */
+    public Map<String, Home> getHomes() {
+        if (homes == null) homes = new HashMap<>();
+        return homes;
+    }
 }
